@@ -1,4 +1,6 @@
+import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({
@@ -18,8 +20,13 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text('Hello World!'),
+    return Scaffold(
+      body: Center(
+        child: TextButton(
+          onPressed: () => context.go(SignInPageConnector.route),
+          child: const Text('Landing Page'),
+        ),
+      ),
     );
   }
 }

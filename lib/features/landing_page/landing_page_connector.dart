@@ -5,6 +5,8 @@ import 'package:casureco/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class LandingPageConnector extends StatelessWidget {
+  static const route = '/';
+
   const LandingPageConnector({Key? key}) : super(key: key);
 
   @override

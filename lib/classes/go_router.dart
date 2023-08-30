@@ -1,4 +1,5 @@
 import 'package:casureco/features/landing_page/landing_page_connector.dart';
+import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,6 +22,13 @@ class Casureco2Routes {
           ),
         ],
       ),
+      GoRoute(
+        path: '/signin',
+        builder: (BuildContext context, GoRouterState state) {
+          return const SignInPageConnector();
+        },
+        routes: const <RouteBase>[],
+      )
     ],
   );
 }
