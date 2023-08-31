@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "270455900877",
+    "project_id": "casureco2-1c67d",
+    "storage_bucket": "casureco2-1c67d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270455900877:android:aaf206f7a912279468b784",
+        "android_client_info": {
+          "package_name": "com.example.casureco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270455900877-u4vl490q5ec4c6mjat9gdhoqokbf3bnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk2q71vDjT9ofGcj3-ScftAYYJsmZl56A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270455900877-u4vl490q5ec4c6mjat9gdhoqokbf3bnd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "270455900877-im8hle6bfrh2touucp71sg9pvipno44s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.casureco"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

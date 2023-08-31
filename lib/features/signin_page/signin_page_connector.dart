@@ -13,7 +13,9 @@ class SignInPageConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, SignInPageVm>(
       vm: () => SignInPageVmFactory(),
-      builder: (context, vm) => const SignInPage(),
+      builder: (context, vm) => SignInPage(
+        onFirebaseSignIn: vm.onFirebaseSignIn,
+      ),
     );
   }
 }

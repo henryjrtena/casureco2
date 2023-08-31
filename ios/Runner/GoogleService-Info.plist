@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>270455900877-im8hle6bfrh2touucp71sg9pvipno44s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.270455900877-im8hle6bfrh2touucp71sg9pvipno44s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD1EB-HtlPsEM54Shb1lXB3IAW0eHFRUHg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>270455900877</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.casureco</string>
+	<key>PROJECT_ID</key>
+	<string>casureco2-1c67d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>casureco2-1c67d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:270455900877:ios:88e594ca85387c7868b784</string>
+</dict>
+</plist>

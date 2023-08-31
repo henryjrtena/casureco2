@@ -7,10 +7,12 @@ part of 'app_state.dart';
 // **************************************************************************
 
 _$_AppState _$$_AppStateFromJson(Map<String, dynamic> json) => _$_AppState(
-      test: json['test'] as String? ?? 'test',
+      authUser: json['authUser'] == null
+          ? null
+          : AuthUser.fromJson(json['authUser'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_AppStateToJson(_$_AppState instance) =>
     <String, dynamic>{
-      'test': instance.test,
+      'authUser': instance.authUser,
     };

@@ -20,7 +20,7 @@ AppState _$AppStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppState {
-  String get test => throw _privateConstructorUsedError;
+  AuthUser? get authUser => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,9 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({String test});
+  $Res call({AuthUser? authUser});
+
+  $AuthUserCopyWith<$Res>? get authUser;
 }
 
 /// @nodoc
@@ -49,14 +51,26 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? test = null,
+    Object? authUser = freezed,
   }) {
     return _then(_value.copyWith(
-      test: null == test
-          ? _value.test
-          : test // ignore: cast_nullable_to_non_nullable
-              as String,
+      authUser: freezed == authUser
+          ? _value.authUser
+          : authUser // ignore: cast_nullable_to_non_nullable
+              as AuthUser?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthUserCopyWith<$Res>? get authUser {
+    if (_value.authUser == null) {
+      return null;
+    }
+
+    return $AuthUserCopyWith<$Res>(_value.authUser!, (value) {
+      return _then(_value.copyWith(authUser: value) as $Val);
+    });
   }
 }
 
@@ -67,7 +81,10 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$$_AppStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String test});
+  $Res call({AuthUser? authUser});
+
+  @override
+  $AuthUserCopyWith<$Res>? get authUser;
 }
 
 /// @nodoc
@@ -81,13 +98,13 @@ class __$$_AppStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? test = null,
+    Object? authUser = freezed,
   }) {
     return _then(_$_AppState(
-      test: null == test
-          ? _value.test
-          : test // ignore: cast_nullable_to_non_nullable
-              as String,
+      authUser: freezed == authUser
+          ? _value.authUser
+          : authUser // ignore: cast_nullable_to_non_nullable
+              as AuthUser?,
     ));
   }
 }
@@ -95,18 +112,18 @@ class __$$_AppStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppState implements _AppState {
-  _$_AppState({this.test = 'test'});
+  _$_AppState({this.authUser = null});
 
   factory _$_AppState.fromJson(Map<String, dynamic> json) =>
       _$$_AppStateFromJson(json);
 
   @override
   @JsonKey()
-  final String test;
+  final AuthUser? authUser;
 
   @override
   String toString() {
-    return 'AppState(test: $test)';
+    return 'AppState(authUser: $authUser)';
   }
 
   @override
@@ -114,12 +131,13 @@ class _$_AppState implements _AppState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppState &&
-            (identical(other.test, test) || other.test == test));
+            (identical(other.authUser, authUser) ||
+                other.authUser == authUser));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, test);
+  int get hashCode => Object.hash(runtimeType, authUser);
 
   @JsonKey(ignore: true)
   @override
@@ -136,12 +154,12 @@ class _$_AppState implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  factory _AppState({final String test}) = _$_AppState;
+  factory _AppState({final AuthUser? authUser}) = _$_AppState;
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
 
   @override
-  String get test;
+  AuthUser? get authUser;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

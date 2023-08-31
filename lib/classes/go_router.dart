@@ -1,5 +1,7 @@
-import 'package:casureco/features/landing_page/landing_page_connector.dart';
+import 'package:casureco/features/home_page/home_page_connector.dart';
 import 'package:casureco/features/signin_page/signin_page_connector.dart';
+import 'package:casureco/state/models/auth_user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +13,20 @@ class Casureco2Routes {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return const LandingPageConnector();
+          return StreamBuilder<User?>(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: ((context, snapshot) {
+              if (!snapshot.hasData) return const SignInPageConnector();
+
+              final authUser = AuthUser(
+                displayName: snapshot.data?.displayName,
+                email: snapshot.data?.email,
+                photoUrl: snapshot.data?.photoURL,
+              );
+
+              return HomePageConnector(authUser: authUser);
+            }),
+          );
         },
         routes: <RouteBase>[
           GoRoute(

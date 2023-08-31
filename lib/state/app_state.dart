@@ -1,3 +1,4 @@
+import 'package:casureco/state/models/auth_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_state.freezed.dart';
@@ -6,7 +7,7 @@ part 'app_state.g.dart';
 @freezed
 class AppState with _$AppState {
   factory AppState({
-    @Default('test') String test,
+    @Default(null) AuthUser? authUser,
   }) = _AppState;
 
   factory AppState.fromJson(Map<String, dynamic> json) => _$AppStateFromJson(json);

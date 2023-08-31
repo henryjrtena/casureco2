@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({
+    required this.onFirebaseSignIn,
     Key? key,
   }) : super(key: key);
+
+  final Function(String, String) onFirebaseSignIn;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -42,7 +45,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 const SizedBox(height: 50),
                 Text(
-                  'Welcome back you\'ve been missed!',
+                  'Welcome to Casureco2 Mobile App',
                   style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 16,
@@ -58,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Password',
-                  obscureText: true,
+                  obscureText: false,
                 ),
                 const SizedBox(height: 10),
                 Padding(
@@ -78,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
 
                 // sign in button
                 MyButton(
-                  onTap: () {},
+                  onTap: () async => widget.onFirebaseSignIn.call(usernameController.text, passwordController.text),
                   label: 'Sign In',
                 ),
 
