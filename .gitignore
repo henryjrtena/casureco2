@@ -45,3 +45,8 @@ app.*.map.json
 .fvm/flutter_sdk
 .fvm/fvm_config.json
 test/widget_test.dart
+lib/handler/models/feeder_updates.freezed.dart
+lib/handler/models/feeder_updates.g.dart
+lib/state/app_state.freezed.dart
+lib/state/app_state.freezed.dart
+ios/Podfile.lock

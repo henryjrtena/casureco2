@@ -1,26 +1,19 @@
+import 'package:casureco/handler/models/feeder.dart';
 import 'package:casureco/state/models/auth_user.dart';
+import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({
     required this.authUser,
     required this.onFirebaseSignOut,
+    required this.feeders,
     Key? key,
   }) : super(key: key);
 
   final AuthUser authUser;
   final VoidCallback onFirebaseSignOut;
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() => super.initState();
-
-  @override
-  void dispose() => super.dispose();
+  final List<Feeder> feeders;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +22,24 @@ class _HomePageState extends State<HomePage> {
         IconButton(
           icon: const Icon(Icons.logout_outlined),
           tooltip: 'Sign-out',
-          onPressed: () => widget.onFirebaseSignOut.call(),
+          onPressed: () => onFirebaseSignOut.call(),
         )
       ]),
-      body: Center(
-        child: TextButton(
-          onPressed: () {},
-          child: Text('Hi! ${widget.authUser.email}'),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
         ),
+        itemBuilder: (context, index) {
+          final feeder = feeders[index];
+
+          return ListTile(
+            title: Text(feeder.name ?? emptyString),
+          );
+        },
+        itemCount: feeders.length,
       ),
     );
   }
