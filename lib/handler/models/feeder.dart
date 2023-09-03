@@ -10,7 +10,7 @@ class Feeder with _$Feeder {
     @JsonKey(name: "id") int? id,
     @JsonKey(name: "name") String? name,
     @JsonKey(name: "status") int? status,
-    @JsonKey(name: "areas") List<String>? areas,
+    @JsonKey(name: "areas") String? areas,
     @JsonKey(name: "updates") List<FeederUpdates>? updates,
   }) = _Feeder;
 

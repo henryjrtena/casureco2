@@ -1,7 +1,9 @@
+import 'package:casureco/features/feeder_details/feeder_details_connector.dart';
 import 'package:casureco/handler/models/feeder.dart';
 import 'package:casureco/state/models/auth_user.dart';
 import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -20,9 +22,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(actions: [
         IconButton(
-          icon: const Icon(Icons.logout_outlined),
+          icon: const Icon(Icons.logout_sharp),
           tooltip: 'Sign-out',
-          onPressed: () => onFirebaseSignOut.call(),
+          onPressed: onFirebaseSignOut,
         )
       ]),
       body: GridView.builder(
@@ -35,8 +37,16 @@ class HomePage extends StatelessWidget {
         itemBuilder: (context, index) {
           final feeder = feeders[index];
 
-          return ListTile(
-            title: Text(feeder.name ?? emptyString),
+          return GestureDetector(
+            child: Card(
+              child: ListTile(
+                title: Text(feeder.name ?? emptyString),
+              ),
+            ),
+            onTap: () => context.go(
+              FeederDetailsConnector.route,
+              extra: feeder.id,
+            ),
           );
         },
         itemCount: feeders.length,

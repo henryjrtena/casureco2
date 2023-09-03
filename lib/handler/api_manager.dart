@@ -21,20 +21,14 @@ class ApiManager {
   }
 
   Future<void> addFeeder() async {
-    FirebaseFirestore.instance.collection('feeders').add({
-      "id": 1,
-      "status": 0,
-      "name": "Feeder 12",
-      "areas": ["Part of Barlin", "BIR", "Bonifacio St.", "Caceres St."],
-      "updates": [
-        {
-          "id": 0,
-          "status": 0,
-          "startDate": DateTime.now().toString(),
-          "endDate": DateTime.now().add(const Duration(hours: 5)).toString(),
-          "description": "Corrective and Preventive Maintenance of Del Rosario and Concepcion Power Substation",
-        }
-      ]
-    });
+
   }
 }
+
+// {
+// "id": 0,
+// "status": 0,
+// "startDate": DateTime.now().toString(),
+// "endDate": DateTime.now().add(const Duration(hours: 5)).toString(),
+// "description": "Corrective and Preventive Maintenance of Del Rosario and Concepcion Power Substation",
+// }

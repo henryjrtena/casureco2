@@ -10,6 +10,7 @@ class AppState with _$AppState {
   factory AppState({
     @Default(null) AuthUser? authUser,
     @Default(<Feeder>[]) List<Feeder> feeders,
+    @Default(null) Feeder? selectedFeeder,
   }) = _AppState;
 
   factory AppState.fromJson(Map<String, dynamic> json) => _$AppStateFromJson(json);

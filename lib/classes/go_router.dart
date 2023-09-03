@@ -1,3 +1,4 @@
+import 'package:casureco/features/feeder_details/feeder_details_connector.dart';
 import 'package:casureco/features/home_page/home_page_connector.dart';
 import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:casureco/state/models/auth_user.dart';
@@ -30,9 +31,11 @@ class Casureco2Routes {
         },
         routes: <RouteBase>[
           GoRoute(
-            path: 'details',
+            path: 'feeder-details',
             builder: (BuildContext context, GoRouterState state) {
-              return const Placeholder();
+              final extra = state.extra as int;
+
+              return FeederDetailsConnector(feederId: extra);
             },
           ),
         ],
