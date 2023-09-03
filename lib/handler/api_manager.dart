@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:casureco/handler/models/feeder.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
