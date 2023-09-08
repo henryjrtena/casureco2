@@ -1,22 +1,22 @@
-import 'package:casureco/features/signup_page/signup_page_connector.dart';
+import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:casureco/widgets/button.dart';
 import 'package:casureco/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({
-    required this.onFirebaseSignIn,
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({
+    required this.onFirebaseSignUp,
     Key? key,
   }) : super(key: key);
 
-  final Function(String, String) onFirebaseSignIn;
+  final Function(String, String) onFirebaseSignUp;
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -56,7 +56,7 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(height: 25),
                 AppTextField(
                   controller: emailController,
-                  hintText: 'Username',
+                  hintText: 'Email',
                   obscureText: false,
                 ),
                 const SizedBox(height: 10),
@@ -71,22 +71,20 @@ class _SignInPageState extends State<SignInPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
+                      GestureDetector(
+                        onTap: () => context.go(SignInPageConnector.route),
+                        child: Text(
+                          'Have an account?',
+                          style: TextStyle(color: Colors.grey[600]),
+                        ),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 25),
                 AppButton(
-                  onTap: () async => widget.onFirebaseSignIn.call(emailController.text, passwordController.text),
-                  label: 'Sign In',
-                ),
-                const SizedBox(height: 10),
-                AppButton(
-                  onTap: () => context.go(SignUpPageConnector.route),
-                  label: 'Sign Up',
+                  onTap: () async => await widget.onFirebaseSignUp.call(emailController.text, passwordController.text),
+                  label: 'Create an account',
                 ),
                 const SizedBox(height: 100),
               ],

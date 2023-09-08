@@ -1,8 +1,10 @@
 import 'package:casureco/handler/models/feeder.dart';
+import 'package:casureco/handler/models/user_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ApiManager {
   final cf = FirebaseFirestore.instance.collection('feeders');
+  final cU = FirebaseFirestore.instance.collection('users');
 
   Future<List<Feeder>> getAllFeeders() async {
     final feeders = <Feeder>[];
@@ -21,6 +23,8 @@ class ApiManager {
   Future<void> addFeeder() async {
 
   }
+
+  Future<void> addUser(AppUserInfo appUserInfo) async => cU.add(appUserInfo.toJson());
 }
 
 // {

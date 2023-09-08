@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 // Constant Values
 
 // Int and Double
@@ -8,3 +10,11 @@ const defaultOneDouble = 0.0;
 
 // String
 const emptyString = '';
+
+// Colors
+const white = Colors.white;
+const black = Colors.black54;
+
+// -> Color Pallet
+const yellow = Color.fromRGBO(244, 235, 26, 1);
+const blue = Color.fromRGBO(42, 48, 129, 1);

@@ -1,19 +1,19 @@
 import 'package:casureco/features/feeder_details/feeder_details_connector.dart';
 import 'package:casureco/handler/models/feeder.dart';
-import 'package:casureco/state/models/auth_user.dart';
+import 'package:casureco/handler/models/user_info.dart';
 import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
-    required this.authUser,
+    required this.appUserInfo,
     required this.onFirebaseSignOut,
     required this.feeders,
     Key? key,
   }) : super(key: key);
 
-  final AuthUser authUser;
+  final AppUserInfo appUserInfo;
   final VoidCallback onFirebaseSignOut;
   final List<Feeder> feeders;
 

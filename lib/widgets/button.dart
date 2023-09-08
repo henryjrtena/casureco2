@@ -1,7 +1,8 @@
+import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
-  const MyButton({
+class AppButton extends StatelessWidget {
+  const AppButton({
     required this.onTap,
     required this.label,
     super.key,
@@ -15,17 +16,17 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.all(20.0),
         margin: const EdgeInsets.symmetric(horizontal: 25.0),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: blue,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Center(
           child: Text(
             label,
             style: const TextStyle(
-              color: Colors.white,
+              color: white,
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
