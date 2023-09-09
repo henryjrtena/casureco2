@@ -9,8 +9,8 @@ class FeederDetails extends StatelessWidget {
     required this.feeder,
     required this.subscribeFeeders,
     required this.onSubscribed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Feeder? feeder;
   final ValueChanged<String> onSubscribed;
@@ -55,7 +55,7 @@ class FeederDetails extends StatelessWidget {
                           ],
                         ),
                         FilledButton(
-                          style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                          style: ElevatedButton.styleFrom(backgroundColor: blue),
                           onPressed: () => onSubscribed.call(feederId),
                           child: Text(isSubscribed ? 'Unsubscribe' : 'Subscribe'),
                         )

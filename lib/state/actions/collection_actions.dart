@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:async_redux/async_redux.dart';
 import 'package:casureco/handler/api_manager.dart';
+import 'package:casureco/handler/models/feeder.dart';
 import 'package:casureco/main.dart';
 import 'package:casureco/state/app_state.dart';
 
@@ -35,10 +36,16 @@ class SetSelectedFeederAction extends ReduxAction<AppState> {
 }
 
 class ClearSelectedFeederAction extends ReduxAction<AppState> {
-  /// Set the selectedFeeder into [null] onDispose.
+  @override
+  FutureOr<AppState> reduce() => state.copyWith(selectedFeeder: null);
+}
+
+class UpdateFeedersAction extends ReduxAction<AppState> {
+  UpdateFeedersAction(this.feeders);
+  final List<Feeder> feeders;
 
   @override
-  AppState reduce() => state.copyWith(selectedFeeder: null);
+  AppState reduce() => state.copyWith(feeders: feeders);
 }
 
 class SubscribeAFeederAction extends ReduxAction<AppState> {

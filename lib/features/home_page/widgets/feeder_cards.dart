@@ -9,15 +9,31 @@ import 'package:go_router/go_router.dart';
 class FeedersGridView extends StatelessWidget {
   const FeedersGridView({
     required this.feeders,
+    required this.subscribesTo,
     this.isAllFeeders = false,
     super.key,
   });
 
   final List<Feeder> feeders;
+  final List<String> subscribesTo;
   final bool isAllFeeders;
 
   @override
   Widget build(BuildContext context) {
+
+    final subscribeFeeders = List<Feeder>.from([]);
+
+    if(!isAllFeeders){
+      for(final feeder in feeders){
+        if(subscribesTo.contains(feeder.id.toString())){
+          subscribeFeeders.add(feeder);
+        }
+      }
+    }
+    else{
+      subscribeFeeders.addAll(feeders);
+    }
+
     return GridView.builder(
       padding: EdgeInsets.symmetric(horizontal: 18.0),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -27,7 +43,7 @@ class FeedersGridView extends StatelessWidget {
         mainAxisSpacing: 20,
       ),
       itemBuilder: (context, index) {
-        final feeder = feeders[index];
+        final feeder = subscribeFeeders[index];
         final bulletStatus = FeederStatus.values[feeder.status ?? defaultZero];
         return GestureDetector(
           child: Card(
@@ -53,11 +69,11 @@ class FeedersGridView extends StatelessWidget {
           ),
           onTap: () => context.go(
             FeederDetailsConnector.route,
-            extra: feeder.id,
+            extra: feeder,
           ),
         );
       },
-      itemCount: feeders.length,
+      itemCount: subscribeFeeders.length,
     );
   }
 }

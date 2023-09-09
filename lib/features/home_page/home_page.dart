@@ -10,8 +10,8 @@ class HomePage extends StatelessWidget {
     required this.appUserInfo,
     required this.onFirebaseSignOut,
     required this.feeders,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final AppUserInfo appUserInfo;
   final VoidCallback onFirebaseSignOut;
@@ -19,21 +19,21 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final subscribes = appUserInfo.subscribeTo;
-    final subscribeFeeders = List<Feeder>.from([]);
+    final subscribes = appUserInfo.subscribeTo ?? List.empty();
+    // final subscribeFeeders = List<Feeder>.from([]);
 
-    if (subscribes == null) {
-      subscribeFeeders.addAll(feeders);
-    } else {
-      for (final feeder in feeders) {
-        if (subscribes.contains(feeder.id?.toString())) {
-          subscribeFeeders.add(feeder);
-        }
-      }
-    }
+    // if (subscribes == null) {
+    //   subscribeFeeders.addAll(feeders);
+    // } else {
+    //   for (final feeder in feeders) {
+    //     if (subscribes.contains(feeder.id?.toString())) {
+    //       subscribeFeeders.add(feeder);
+    //     }
+    //   }
+    // }
 
     return DefaultTabController(
-      initialIndex: 0,
+      initialIndex: defaultZero,
       length: 2,
       child: Scaffold(
         drawer: Drawer(
@@ -50,9 +50,7 @@ class HomePage extends StatelessWidget {
               ListTile(
                 title: const Text('My Profile'),
                 leading: Icon(Icons.account_circle_sharp),
-                onTap: () {
-
-                },
+                onTap: () {},
               ),
               ListTile(
                 title: const Text('Sign-out'),
@@ -86,10 +84,14 @@ class HomePage extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            FeedersGridView(feeders: subscribeFeeders),
+            FeedersGridView(
+              feeders: feeders,
+              subscribesTo: subscribes,
+            ),
             FeedersGridView(
               feeders: feeders,
               isAllFeeders: true,
+              subscribesTo: subscribes,
             ),
           ],
         ),

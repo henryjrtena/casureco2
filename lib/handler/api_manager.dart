@@ -23,6 +23,16 @@ class ApiManager {
     return feeders;
   }
 
+  Stream<List<Feeder>> getAllFeedersStream() {
+    return cF.snapshots().map((querySnapshot) {
+      final feeders = <Feeder>[];
+      for (final doc in querySnapshot.docs) {
+        feeders.add(Feeder.fromJson(doc.data()));
+      }
+      return feeders;
+    });
+  }
+
   Future<void> subscribeFeeder(AppUserInfo userInfo) async => cU.doc(userInfo.userId).update(userInfo.toJson());
 
   Future<void> addFeeder() async {}

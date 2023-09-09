@@ -1,6 +1,7 @@
 import 'package:casureco/classes/auth_changes.dart';
 import 'package:casureco/features/feeder_details/feeder_details_connector.dart';
 import 'package:casureco/features/signup_page/signup_page_connector.dart';
+import 'package:casureco/handler/models/feeder.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,25 +12,21 @@ class Casureco2Routes {
     routes: <RouteBase>[
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) {
-          return AuthChangesHandler();
-        },
+        builder: (BuildContext context, GoRouterState state) => AuthChangesHandler(),
         routes: <RouteBase>[
           GoRoute(
             path: 'feeder-details',
             builder: (BuildContext context, GoRouterState state) {
-              final extra = state.extra as int;
+              final feeder = state.extra as Feeder;
 
-              return FeederDetailsConnector(feederId: extra);
+              return FeederDetailsConnector(feeder: feeder);
             },
           ),
         ],
       ),
       GoRoute(
         path: '/signin',
-        builder: (BuildContext context, GoRouterState state) {
-          return AuthChangesHandler();
-        },
+        builder: (BuildContext context, GoRouterState state) => AuthChangesHandler(),
         routes: const <RouteBase>[],
       ),
       GoRoute(
