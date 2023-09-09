@@ -1,9 +1,9 @@
-import 'package:casureco/features/feeder_details/feeder_details_connector.dart';
+import 'package:casureco/extensions/context_texttheme_ext.dart';
+import 'package:casureco/features/home_page/widgets/feeder_cards.dart';
 import 'package:casureco/handler/models/feeder.dart';
 import 'package:casureco/handler/models/user_info.dart';
 import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -19,37 +19,80 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(actions: [
-        IconButton(
-          icon: const Icon(Icons.logout_sharp),
-          tooltip: 'Sign-out',
-          onPressed: onFirebaseSignOut,
-        )
-      ]),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        itemBuilder: (context, index) {
-          final feeder = feeders[index];
+    final subscribes = appUserInfo.subscribeTo;
+    final subscribeFeeders = List<Feeder>.from([]);
 
-          return GestureDetector(
-            child: Card(
-              child: ListTile(
-                title: Text(feeder.name ?? emptyString),
+    if (subscribes == null) {
+      subscribeFeeders.addAll(feeders);
+    } else {
+      for (final feeder in feeders) {
+        if (subscribes.contains(feeder.id?.toString())) {
+          subscribeFeeders.add(feeder);
+        }
+      }
+    }
+
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 2,
+      child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(color: blue),
+                child: Text(
+                  'Casureco II',
+                  style: context.headlineMedium.copyWith(color: white),
+                ),
               ),
+              ListTile(
+                title: const Text('My Profile'),
+                leading: Icon(Icons.account_circle_sharp),
+                onTap: () {
+
+                },
+              ),
+              ListTile(
+                title: const Text('Sign-out'),
+                leading: Icon(Icons.logout),
+                onTap: onFirebaseSignOut,
+              ),
+            ],
+          ),
+        ),
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications),
+            )
+          ],
+          title: Text('Casureco II'),
+          bottom: TabBar(
+            padding: EdgeInsets.only(bottom: 10.0),
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.subject_sharp),
+                text: 'My Feeders',
+              ),
+              Tab(
+                icon: Icon(Icons.select_all),
+                text: 'All Feeders',
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            FeedersGridView(feeders: subscribeFeeders),
+            FeedersGridView(
+              feeders: feeders,
+              isAllFeeders: true,
             ),
-            onTap: () => context.go(
-              FeederDetailsConnector.route,
-              extra: feeder.id,
-            ),
-          );
-        },
-        itemCount: feeders.length,
+          ],
+        ),
       ),
     );
   }

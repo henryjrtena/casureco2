@@ -2,6 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:casureco/features/home_page/home_page_connector.dart';
 import 'package:casureco/handler/models/feeder.dart';
 import 'package:casureco/handler/models/user_info.dart';
+import 'package:casureco/state/actions/auth_user_actions.dart';
 import 'package:casureco/state/app_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,10 @@ class HomePageVmFactory extends VmFactory<AppState, HomePageConnector, Vm> {
         feeders: state.feeders,
       );
 
-  Future<void> onFirebaseSignOut() async => await FirebaseAuth.instance.signOut();
+  Future<void> onFirebaseSignOut() async {
+    await FirebaseAuth.instance.signOut();
+    dispatchSync(SignOutUserAction());
+  }
 }
 
 class HomePageVm extends Vm {

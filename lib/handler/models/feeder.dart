@@ -4,6 +4,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'feeder.freezed.dart';
 part 'feeder.g.dart';
 
+enum FeederStatus{
+  @JsonValue(0)
+  unknown,
+  @JsonValue(1)
+  not_energized,
+  @JsonValue(2)
+  energized
+}
+
 @freezed
 class Feeder with _$Feeder {
   const factory Feeder({

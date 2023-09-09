@@ -40,3 +40,24 @@ class ClearSelectedFeederAction extends ReduxAction<AppState> {
   @override
   AppState reduce() => state.copyWith(selectedFeeder: null);
 }
+
+class SubscribeAFeederAction extends ReduxAction<AppState> {
+  SubscribeAFeederAction(this.feederId);
+  final String feederId;
+
+  @override
+  Future<AppState> reduce() async {
+    final subscribeTo = state.appUserInfo?.subscribeTo;
+
+    if (subscribeTo == null) return state;
+
+    final updatedSubscribeTo = List<String>.from(subscribeTo);
+
+    subscribeTo.contains(feederId) ? updatedSubscribeTo.remove(feederId) : updatedSubscribeTo.add(feederId);
+
+    final appUserInfo = state.appUserInfo?.copyWith(subscribeTo: updatedSubscribeTo);
+    if (appUserInfo != null) await getIt<ApiManager>().subscribeFeeder(appUserInfo);
+
+    return state.copyWith(appUserInfo: appUserInfo);
+  }
+}

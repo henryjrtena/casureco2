@@ -23,6 +23,8 @@ class FeederDetailsConnector extends StatelessWidget {
       onDispose: (store) => store.dispatchSync(ClearSelectedFeederAction()),
       builder: (context, vm) => FeederDetails(
         feeder: vm.selectedFeeder,
+        onSubscribed: vm.onSubscribe,
+        subscribeFeeders: vm.subscribeFeeders,
       ),
     );
   }

@@ -12,9 +12,7 @@ GetIt getIt = GetIt.instance;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   getIt.registerSingleton<ApiManager>(ApiManager(), signalsReady: true);
 
@@ -33,6 +31,7 @@ void main() async {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: goRouter,
+        theme: ThemeData.light(useMaterial3: true),
       ),
     ),
   );

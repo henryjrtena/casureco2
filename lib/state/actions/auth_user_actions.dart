@@ -12,7 +12,10 @@ class SaveAuthUserAction extends ReduxAction<AppState> {
   final AppUserInfo appUserInfo;
 
   @override
-  AppState reduce() => state.copyWith(appUserInfo: appUserInfo);
+  Future<AppState> reduce() async {
+    final userInfo = await getIt<ApiManager>().getUserCompleteInfo(appUserInfo);
+    return state.copyWith(appUserInfo: userInfo ?? appUserInfo);
+  }
 }
 
 class SaveNewAppUserInfoAction extends ReduxAction<AppState> {
@@ -26,4 +29,9 @@ class SaveNewAppUserInfoAction extends ReduxAction<AppState> {
 
     return state.copyWith(appUserInfo: appUserInfo);
   }
+}
+
+class SignOutUserAction extends ReduxAction<AppState> {
+  @override
+  AppState reduce() => state.copyWith(appUserInfo: null);
 }

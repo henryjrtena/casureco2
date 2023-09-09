@@ -22,7 +22,7 @@ class HomePageConnector extends StatelessWidget {
     return StoreConnector<AppState, HomePageVm>(
       vm: () => HomePageVmFactory(),
       onInit: (store) => store
-        ..dispatchSync(SaveAuthUserAction(appUserInfo: appUserInfo))
+        ..dispatchAsync(SaveAuthUserAction(appUserInfo: appUserInfo))
         ..dispatchAsync(GetAllFeedersAction()),
       builder: (context, vm) => HomePage(
         appUserInfo: vm.appUserInfo,
