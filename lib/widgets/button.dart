@@ -1,5 +1,6 @@
 import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -12,27 +13,16 @@ class AppButton extends StatelessWidget {
   final String label;
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(20.0),
-        margin: const EdgeInsets.symmetric(horizontal: 25.0),
-        decoration: BoxDecoration(
-          color: blue,
-          borderRadius: BorderRadius.circular(8.0),
+  Widget build(BuildContext context) => FilledButton(
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(double.infinity, 50.0),
         ),
-        child: Center(
-          child: Text(
-            label,
-            style: const TextStyle(
-              color: white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            ),
+        onPressed: onTap,
+        child: Text(
+          label,
+          style: GoogleFonts.montserrat(
+            textStyle: TextStyle(fontWeight: FontWeight.w600),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

@@ -3,6 +3,7 @@ import 'package:casureco/classes/go_router.dart';
 import 'package:casureco/firebase_options.dart';
 import 'package:casureco/handler/api_manager.dart';
 import 'package:casureco/state/app_state.dart';
+import 'package:casureco/utilities/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ void main() async {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: goRouter,
-        theme: ThemeData.light(useMaterial3: true),
+        theme: CasurecoTheme.buildTheme,
       ),
     ),
   );

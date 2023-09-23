@@ -1,4 +1,5 @@
 import 'package:casureco/features/signin_page/signin_page_connector.dart';
+import 'package:casureco/utilities/constant.dart';
 import 'package:casureco/widgets/button.dart';
 import 'package:casureco/widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -30,27 +31,47 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
+  void signUp() async {
+    final email = emailController.text;
+    final password = passwordController.text;
+
+    if (email.isEmpty ||
+        password.isEmpty ||
+        email.length < minChars ||
+        password.length < minChars) return;
+
+    // Passed Validations
+    widget.onFirebaseSignUp.call(
+      email,
+      password,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: white,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 50),
-                const Icon(
-                  Icons.power,
-                  size: 100,
+                Image.asset(
+                  'assets/casureco.png',
+                  scale: 2,
                 ),
                 const SizedBox(height: 50),
-                Text(
-                  'Welcome to Casureco2 Mobile App',
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontSize: 16,
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Sign-up',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge
+                        ?.copyWith(color: blue),
                   ),
                 ),
                 const SizedBox(height: 25),
@@ -83,8 +104,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 25),
                 AppButton(
-                  onTap: () async => await widget.onFirebaseSignUp.call(emailController.text, passwordController.text),
-                  label: 'Create an account',
+                  onTap: signUp,
+                  label: 'Continue',
                 ),
                 const SizedBox(height: 100),
               ],
