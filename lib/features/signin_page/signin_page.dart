@@ -31,7 +31,7 @@ class _SignInPageState extends State<SignInPage> {
     super.dispose();
   }
 
-  void signIn() async {
+  void _signIn() async {
     final email = emailController.text;
     final password = passwordController.text;
 
@@ -101,7 +101,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 const SizedBox(height: 25),
                 AppButton(
-                  onTap: signIn,
+                  onTap: _signIn,
                   label: 'Continue',
                 ),
                 const SizedBox(height: 10),

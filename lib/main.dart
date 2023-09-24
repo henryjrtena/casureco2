@@ -31,8 +31,8 @@ void main() async {
       store: store,
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        routerConfig: goRouter,
         theme: CasurecoTheme.buildTheme,
+        routerConfig: goRouter,
       ),
     ),
   );

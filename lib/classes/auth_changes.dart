@@ -1,4 +1,6 @@
+import 'package:casureco/features/feeders_page/feeders_page_connector.dart';
 import 'package:casureco/features/home_page/home_page_connector.dart';
+import 'package:casureco/features/profile/profile_page.dart';
 import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:casureco/features/signup_page/signup_page_connector.dart';
 import 'package:casureco/handler/models/user_info.dart';
@@ -28,15 +30,19 @@ class AuthChangesHandler extends StatelessWidget {
             photoUrl: user?.photoURL,
           );
 
-          return HomePageConnector(appUserInfo: appUserInfo);
+          switch (route) {
+            case SignUpPageConnector.route:
+              return SignUpPageConnector();
+            case ProfilePage.route:
+              return ProfilePage();
+            case FeedersConnector.route:
+              return FeedersConnector();
+            default:
+              return HomePageConnector(appUserInfo: appUserInfo);
+          }
         }
 
-        switch (route) {
-          case SignUpPageConnector.route:
-            return SignUpPageConnector();
-          default:
-            return SignInPageConnector();
-        }
+        return SignInPageConnector();
       }),
     );
   }

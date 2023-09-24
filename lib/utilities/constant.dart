@@ -9,6 +9,7 @@ const defaultOne = 1;
 const defaultOneDouble = 0.0;
 
 // String
+const appName = 'CASURECO II';
 const emptyString = '';
 
 // Colors

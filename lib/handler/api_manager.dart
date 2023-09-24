@@ -7,8 +7,6 @@ class ApiManager {
   final cF = FirebaseFirestore.instance.collection('feeders');
   final cU = FirebaseFirestore.instance.collection('users');
 
-
-
   Future<List<Feeder>> getAllFeeders() async {
     final feeders = <Feeder>[];
 

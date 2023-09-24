@@ -31,7 +31,7 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
-  void signUp() async {
+  void _signUp() async {
     final email = emailController.text;
     final password = passwordController.text;
 
@@ -104,7 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(height: 25),
                 AppButton(
-                  onTap: signUp,
+                  onTap: _signUp,
                   label: 'Continue',
                 ),
                 const SizedBox(height: 100),

@@ -6,6 +6,7 @@ class CasurecoTheme {
   static ThemeData get buildTheme {
     final baseTheme = ThemeData(
       useMaterial3: true,
+      scaffoldBackgroundColor: white,
     );
 
     final colorScheme = baseTheme.colorScheme.copyWith(
