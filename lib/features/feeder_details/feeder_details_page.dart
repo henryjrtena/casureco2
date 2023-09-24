@@ -62,6 +62,8 @@ class FeederDetails extends StatelessWidget {
                             await NotificationHandler.showNotification(
                               title: 'First Notifications',
                               body: 'with Awesome Notification',
+                              scheduled: true,
+                              interval: 5,
                             );
                           },
                           child: Text(isSubscribed ? 'Unsubscribe' : 'Subscribe'),
