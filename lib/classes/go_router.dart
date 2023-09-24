@@ -10,7 +10,10 @@ import 'package:go_router/go_router.dart';
 class Casureco2Routes {
   Casureco2Routes();
 
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   final router = GoRouter(
+    navigatorKey: navigatorKey,
     routes: <RouteBase>[
       GoRoute(
         path: '/',

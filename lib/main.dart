@@ -1,5 +1,6 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:casureco/classes/go_router.dart';
+import 'package:casureco/classes/notification_handler.dart';
 import 'package:casureco/firebase_options.dart';
 import 'package:casureco/handler/api_manager.dart';
 import 'package:casureco/state/app_state.dart';
@@ -13,6 +14,8 @@ GetIt getIt = GetIt.instance;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await NotificationHandler.initializeLocalNotifications();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   getIt.registerSingleton<ApiManager>(ApiManager(), signalsReady: true);

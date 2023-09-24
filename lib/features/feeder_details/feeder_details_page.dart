@@ -1,3 +1,4 @@
+import 'package:casureco/classes/notification_handler.dart';
 import 'package:casureco/extensions/context_texttheme_ext.dart';
 import 'package:casureco/extensions/feeder_status_ext.dart';
 import 'package:casureco/handler/models/feeder.dart';
@@ -56,7 +57,13 @@ class FeederDetails extends StatelessWidget {
                         ),
                         FilledButton(
                           style: ElevatedButton.styleFrom(backgroundColor: blue),
-                          onPressed: () => onSubscribed.call(feederId),
+                          onPressed: () async {
+                            onSubscribed.call(feederId);
+                            await NotificationHandler.showNotification(
+                              title: 'First Notifications',
+                              body: 'with Awesome Notification',
+                            );
+                          },
                           child: Text(isSubscribed ? 'Unsubscribe' : 'Subscribe'),
                         )
                       ],
