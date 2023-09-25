@@ -2,7 +2,6 @@ import 'package:async_redux/async_redux.dart';
 import 'package:casureco/features/feeder_details/feeder_details_page.dart';
 import 'package:casureco/features/feeder_details/feeder_details_vm.dart';
 import 'package:casureco/handler/models/feeder.dart';
-import 'package:casureco/state/actions/collection_actions.dart';
 import 'package:casureco/state/app_state.dart';
 import 'package:flutter/material.dart';
 

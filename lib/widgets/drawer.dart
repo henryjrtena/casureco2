@@ -33,8 +33,16 @@ class AppDrawer extends StatelessWidget {
               'My Profile',
               style: context.titleMedium.copyWith(color: black),
             ),
-            leading: Icon(Icons.account_circle_sharp),
+            leading: Icon(Icons.home),
             onTap: () => navigateTo(context, ProfilePage.route),
+          ),
+          ListTile(
+            title: Text(
+              'Home',
+              style: context.titleMedium.copyWith(color: black),
+            ),
+            leading: Icon(Icons.account_circle_sharp),
+            onTap: () => navigateTo(context, '/'),
           ),
           ListTile(
             title: Text(
