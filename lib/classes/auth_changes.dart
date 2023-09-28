@@ -38,7 +38,7 @@ class AuthChangesHandler extends StatelessWidget {
             case FeedersConnector.route:
               return FeedersConnector();
             default:
-              return HomePageConnector(appUserInfo: appUserInfo);
+              return HomePageConnector();
           }
         }
 

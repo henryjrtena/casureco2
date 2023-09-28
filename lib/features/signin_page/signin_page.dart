@@ -1,3 +1,5 @@
+import 'package:casureco/classes/signin_arguments.dart';
+import 'package:casureco/features/home_page/home_page_connector.dart';
 import 'package:casureco/features/signup_page/signup_page_connector.dart';
 import 'package:casureco/utilities/constant.dart';
 import 'package:casureco/widgets/button.dart';
@@ -11,7 +13,7 @@ class SignInPage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final Function(String, String) onFirebaseSignIn;
+  final ValueChanged<SignInArguments> onFirebaseSignIn;
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -35,15 +37,17 @@ class _SignInPageState extends State<SignInPage> {
     final email = emailController.text;
     final password = passwordController.text;
 
-    if (email.isEmpty ||
-        password.isEmpty ||
-        email.length < minChars ||
-        password.length < minChars) return;
+    if (email.isEmpty || password.isEmpty || email.length < minChars || password.length < minChars) return;
 
     // Passed Validations
-    await widget.onFirebaseSignIn.call(
-      email,
-      password,
+    widget.onFirebaseSignIn.call(
+      SignInArguments(
+        email: email,
+        password: password,
+        onSuccess: () {
+          context.go(HomePageConnector.route);
+        },
+      ),
     );
   }
 
@@ -68,10 +72,7 @@ class _SignInPageState extends State<SignInPage> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Sign-in',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineLarge
-                        ?.copyWith(color: blue),
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(color: blue),
                   ),
                 ),
                 const SizedBox(height: 25),
@@ -100,12 +101,12 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
                 const SizedBox(height: 25),
-                AppButton(
+                PrimaryButton(
                   onTap: _signIn,
                   label: 'Continue',
                 ),
                 const SizedBox(height: 10),
-                AppButton(
+                SecondaryButton(
                   onTap: () => context.go(SignUpPageConnector.route),
                   label: 'Create an Account',
                 ),

@@ -8,6 +8,7 @@ part 'app_state.g.dart';
 @freezed
 class AppState with _$AppState {
   factory AppState({
+    @Default(false) bool isLoggedIn,
     @Default(null) AppUserInfo? appUserInfo,
     @Default(<Feeder>[]) List<Feeder> feeders,
     @Default(null) Feeder? selectedFeeder,

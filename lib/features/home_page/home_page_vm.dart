@@ -4,9 +4,19 @@ import 'package:casureco/state/app_state.dart';
 
 class HomePageVmFactory extends VmFactory<AppState, HomePageConnector, Vm> {
   @override
-  Vm fromStore() => HomePageVm();
+  Vm fromStore() => HomePageVm(
+        isLoggedIn: isLoggedIn,
+      );
+
+  bool get isLoggedIn => state.isLoggedIn;
 }
 
 class HomePageVm extends Vm {
-  HomePageVm() : super(equals: []);
+  HomePageVm({
+    required this.isLoggedIn,
+  }) : super(equals: [
+          isLoggedIn,
+        ]);
+
+  final bool isLoggedIn;
 }

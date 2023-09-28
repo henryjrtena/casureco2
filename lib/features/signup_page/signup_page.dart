@@ -103,7 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 const SizedBox(height: 25),
-                AppButton(
+                PrimaryButton(
                   onTap: _signUp,
                   label: 'Continue',
                 ),

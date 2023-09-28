@@ -1,6 +1,7 @@
 import 'package:casureco/extensions/context_texttheme_ext.dart';
 import 'package:casureco/features/feeders_page/feeders_page_connector.dart';
 import 'package:casureco/features/profile/profile_page.dart';
+import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +14,9 @@ class AppDrawer extends StatelessWidget {
 
   final VoidCallback onSignOut;
 
-  void navigateTo(BuildContext context, String route) => context.pushReplacement(route);
+  void navigateTo(BuildContext context, String route) {
+    context.pushReplacement(route, extra: (route == SignInPageConnector.route));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +61,7 @@ class AppDrawer extends StatelessWidget {
               style: context.titleMedium.copyWith(color: black),
             ),
             leading: Icon(Icons.logout),
-            onTap: onSignOut,
+            onTap: () => navigateTo(context, SignInPageConnector.route),
           ),
         ],
       ),
