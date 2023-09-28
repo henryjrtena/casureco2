@@ -23,7 +23,9 @@ class FeederDetails extends StatelessWidget {
     final isSubscribed = subscribeFeeders.contains(feederId);
     final bulletStatus = FeederStatus.values[feeder?.status ?? defaultZero];
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(feeder?.name ?? emptyString),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

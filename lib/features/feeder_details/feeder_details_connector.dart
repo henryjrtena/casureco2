@@ -6,7 +6,7 @@ import 'package:casureco/state/app_state.dart';
 import 'package:flutter/material.dart';
 
 class FeederDetailsConnector extends StatelessWidget {
-  static const route = '/feeder-details';
+  static const route = '/feeders/feeder-details';
 
   const FeederDetailsConnector({
     required this.feeder,

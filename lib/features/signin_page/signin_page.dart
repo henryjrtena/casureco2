@@ -20,8 +20,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = TextEditingController(text: 'henrytena2013@gmail.com');
+  final passwordController = TextEditingController(text: 'adminhenrii');
 
   @override
   void initState() => super.initState();

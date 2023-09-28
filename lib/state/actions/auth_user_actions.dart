@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:async_redux/async_redux.dart';
-import 'package:casureco/features/home_page/home_page_connector.dart';
-import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:casureco/handler/api_manager.dart';
 import 'package:casureco/handler/models/user_info.dart';
 import 'package:casureco/main.dart';

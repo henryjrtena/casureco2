@@ -1,6 +1,5 @@
 import 'package:casureco/extensions/context_texttheme_ext.dart';
 import 'package:casureco/extensions/feeder_status_ext.dart';
-import 'package:casureco/features/feeder_details/feeder_details_connector.dart';
 import 'package:casureco/handler/models/feeder.dart';
 import 'package:casureco/utilities/constant.dart';
 import 'package:flutter/material.dart';
@@ -67,10 +66,12 @@ class FeedersGridView extends StatelessWidget {
               ),
             ),
           ),
-          onTap: () => context.go(
-            FeederDetailsConnector.route,
-            extra: feeder,
-          ),
+          onTap: () {
+            context.go(
+              '/feeders/feeder-details',
+              extra: feeder,
+            );
+          },
         );
       },
       itemCount: subscribeFeeders.length,

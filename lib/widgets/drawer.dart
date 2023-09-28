@@ -1,5 +1,6 @@
 import 'package:casureco/extensions/context_texttheme_ext.dart';
 import 'package:casureco/features/feeders_page/feeders_page_connector.dart';
+import 'package:casureco/features/home_page/home_page_connector.dart';
 import 'package:casureco/features/profile/profile_page.dart';
 import 'package:casureco/features/signin_page/signin_page_connector.dart';
 import 'package:casureco/utilities/constant.dart';
@@ -14,8 +15,9 @@ class AppDrawer extends StatelessWidget {
 
   final VoidCallback onSignOut;
 
-  void navigateTo(BuildContext context, String route) {
-    context.pushReplacement(route, extra: (route == SignInPageConnector.route));
+  void onNavigateTo(BuildContext context, String route){
+    context.go(route, extra: route == SignInPageConnector);
+    context.pop();
   }
 
   @override
@@ -34,34 +36,42 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             title: Text(
               'My Profile',
-              style: context.titleMedium.copyWith(color: black),
+              style: context.titleLarge.copyWith(color: black),
             ),
-            leading: Icon(Icons.home),
-            onTap: () => navigateTo(context, ProfilePage.route),
+            leading: Icon(Icons.account_circle_sharp),
+            onTap: () {
+              onNavigateTo(context, ProfilePage.route);
+            },
           ),
           ListTile(
             title: Text(
               'Home',
-              style: context.titleMedium.copyWith(color: black),
+              style: context.titleLarge.copyWith(color: black),
             ),
-            leading: Icon(Icons.account_circle_sharp),
-            onTap: () => navigateTo(context, '/'),
+            leading: Icon(Icons.home),
+            onTap: () {
+              onNavigateTo(context, HomePageConnector.route);
+            },
           ),
           ListTile(
             title: Text(
               'Feeders',
-              style: context.titleMedium.copyWith(color: black),
+              style: context.titleLarge.copyWith(color: black),
             ),
             leading: Icon(Icons.subject_sharp),
-            onTap: () => navigateTo(context, FeedersConnector.route),
+            onTap: () {
+              onNavigateTo(context, FeedersConnector.route);
+            },
           ),
           ListTile(
             title: Text(
               'Sign-out',
-              style: context.titleMedium.copyWith(color: black),
+              style: context.titleLarge.copyWith(color: black),
             ),
             leading: Icon(Icons.logout),
-            onTap: () => navigateTo(context, SignInPageConnector.route),
+            onTap: () {
+              onNavigateTo(context, SignInPageConnector.route);
+            },
           ),
         ],
       ),
