@@ -29,6 +29,7 @@ class NotificationHandler {
           channelGroupName: 'Group 1',
         )
       ],
+      debug: true,
     );
     await AwesomeNotifications().isNotificationAllowed().then((isAllowed) async {
       if (!isAllowed) {
