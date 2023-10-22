@@ -1,6 +1,8 @@
 import 'package:async_redux/async_redux.dart';
+import 'package:casureco/classes/onesignalhandler.dart';
 import 'package:casureco/features/signup_page/signup_page_connector.dart';
 import 'package:casureco/handler/models/user_info.dart';
+import 'package:casureco/main.dart';
 import 'package:casureco/state/actions/auth_user_actions.dart';
 import 'package:casureco/state/app_state.dart';
 import 'package:casureco/utilities/enums/firebase_auth_exception.dart';
@@ -19,11 +21,14 @@ class SignUpPageVmFactory extends VmFactory<AppState, SignUpPageConnector, Vm> {
       );
       final user = await FirebaseAuth.instance.currentUser;
 
+      final subcriberId = await getIt<OneSignalHandler>().subcriberId;
+
       final appUserInfo = AppUserInfo(
         displayName: user?.displayName,
         userId: user?.uid,
         email: user?.email,
         photoUrl: user?.photoURL,
+        oneSignalId: subcriberId,
       );
 
       dispatchAsync(SaveNewAppUserInfoAction(appUserInfo: appUserInfo));

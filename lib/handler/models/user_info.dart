@@ -13,6 +13,7 @@ class AppUserInfo with _$AppUserInfo {
     @Default(emptyString) String? photoUrl,
     @Default(<String>[]) List<String>? subscribeTo,
     @Default(emptyString) String? fcmToken,
+    @Default(emptyString) String? oneSignalId,
     @Default(<Notification>[]) List<Notification>? notifications,
   }) = _AppUserInfo;
 

@@ -50,3 +50,4 @@ test/widget_test.dart
 lib/state/app_state.freezed.dart
 ios/Podfile.lock
 
+lib/environment.dart

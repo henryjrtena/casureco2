@@ -26,10 +26,14 @@ dependencies:
   go_router: ^10.1.2
 
   firebase_auth: ^4.8.0
-  firebase_core: ^2.15.1
-  cloud_firestore: ^4.9.1
+  firebase_core: ^2.19.0
+  onesignal_flutter: ^5.0.3
+  cloud_firestore: ^4.11.0
   google_fonts: ^6.1.0
-  awesome_notifications: ^0.7.4+1
+#  awesome_notifications: ^0.8.2
+
+  http: ^1.1.0
+  fluttertoast: ^8.2.2
   banner_carousel: ^1.2.1
 
 dev_dependencies:
